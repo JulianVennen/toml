@@ -237,8 +237,6 @@ There is list of skipped rules:
 - encoder/float/max-int
 - encoder/float/long
 
-This
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request
