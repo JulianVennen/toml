@@ -1,22 +1,21 @@
 #!/usr/bin/env bash
 
 # requires TOML test binary
-# go install github.com/toml-lang/toml-test/cmd/toml-test@latest
+# go install github.com/toml-lang/toml-test/v2/cmd/toml-test@latest
 
 skip_decode=(
     -skip='valid/key/quoted-unicode'
-	-skip='invalid/encoding/bad-utf8-*'
+	-skip='invalid/encoding/bad-utf8-in-comment'
 	-skip='invalid/encoding/bad-codepoint'
 )
 
 skip_encode=(
-    -skip='valid/key/quoted-unicode'
-	-skip='valid/float/max-int'
-    -skip='valid/float/long'
-	-skip='valid/spec/float-1'
+	-skip='encoder/key/quoted-unicode'
+	-skip='encoder/spec-1.0.0/float-1'
+	-skip='encoder/float/max-int'
+	-skip='encoder/float/long'
 )
 
 e=0
-toml-test          "${skip_decode[@]}" php ./toml-test-decode.php || e=1
-toml-test -encoder "${skip_encode[@]}" php ./toml-test-encode.php || e=1
+toml-test test -toml=1.0 "${skip_decode[@]}" "${skip_encode[@]}" -decoder='php ./toml-test-decode.php' -encoder='php ./toml-test-encode.php' || e=1
 exit $e

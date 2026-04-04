@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/packagist/l/devium/toml?v1.0.6&style=flat-square)](https://packagist.org/packages/devium/toml)
 
 A robust and efficient PHP library for encoding and decoding [TOML](https://github.com/toml-lang/toml)
-compatible with [v1.0.0](https://toml.io/en/v1.0.0)
+compatible with [v1.0.0](https://toml.io/en/v1.0.0) and [v1.1.0](https://toml.io/en/v1.1.0)
 
 > This library tries to support the TOML specification as much as possible.
 
@@ -80,10 +80,10 @@ dump(toml_encode($data));
 
 This library tries to parse TOML datetime formats into next variants (according to the specification):
 
--   `Devium\Toml\TomlDateTime` (for the [offset date time](https://toml.io/en/v1.0.0#offset-date-time))
--   `Devium\Toml\TomlLocalDatetime` (for the [local date time](https://toml.io/en/v1.0.0#local-date-time))
--   `Devium\Toml\TomlLocalDate` (for the [local date](https://toml.io/en/v1.0.0#local-date))
--   `Devium\Toml\TomlLocalTime` (for the [local time](https://toml.io/en/v1.0.0#local-time))
+-   `Devium\Toml\TomlDateTime` (for the [offset date time](https://toml.io/en/v1.1.0#offset-date-time))
+-   `Devium\Toml\TomlLocalDatetime` (for the [local date time](https://toml.io/en/v1.1.0#local-date-time))
+-   `Devium\Toml\TomlLocalDate` (for the [local date](https://toml.io/en/v1.1.0#local-date))
+-   `Devium\Toml\TomlLocalTime` (for the [local time](https://toml.io/en/v1.1.0#local-time))
 
 Example:
 
@@ -222,6 +222,22 @@ toml_decode($toml, asFloat: true);
 If the array contains a null value, an exception will be thrown.
 
 The only thing possible is a null value for the keys in the tables. Such keys are simply skipped during encoding.
+
+## About testing
+
+This library is tested with official [test cases](https://github.com/toml-lang/toml-test)
+
+There is list of skipped rules:
+
+- valid/key/quoted-unicode
+- invalid/encoding/bad-utf8-in-comment
+- invalid/encoding/bad-codepoint
+- encoder/key/quoted-unicode
+- encoder/spec-1.0.0/float-1
+- encoder/float/max-int
+- encoder/float/long
+
+This
 
 ## Contributing
 
