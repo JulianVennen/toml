@@ -234,7 +234,7 @@ final class TomlKeystore
                 continue;
             }
 
-            if (str_starts_with($header, $arrayTableHeader)) {
+            if (str_starts_with($header, $arrayTableHeader . '.')) {
                 $key = $arrayTable.substr($header, strlen($arrayTableHeader));
 
                 break;
